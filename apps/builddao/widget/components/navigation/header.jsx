@@ -60,21 +60,6 @@ const { href } = VM.require("buildhub.near/widget/lib.url") || {
   href: () => {},
 };
 
-const NavLink = ({ to, children }) => (
-  <Link
-    key={to}
-    // to={`/?page=${to}`}
-    to={href({
-      widgetSrc: "buildhub.near/widget/app",
-      params: {
-        page: to,
-      },
-    })}
-  >
-    {children}
-  </Link>
-);
-
 const [showMenu, setShowMenu] = useState(false);
 const toggleDropdown = () => setShowMenu(!showMenu);
 
@@ -175,7 +160,7 @@ const StyledDropdown = styled.div`
   }
 `;
 
-const AppHeader = ({ page, routes, ...props }) => (
+const AppHeader = ({ page, routes, navigate, ...props }) => (
   <Navbar>
     <div className="d-flex align-items-center justify-content-between w-100">
       <DesktopNavigation className="container-xl">
@@ -202,12 +187,12 @@ const AppHeader = ({ page, routes, ...props }) => (
                 return null;
               }
               return (
-                <NavLink to={k}>
+                <Link key={k} to={navigate({ to: k })}>
                   <Button key={k} variant={page === k && "primary"}>
                     {route.init.icon && <i className={route.init.icon}></i>}
                     {route.init.name}
                   </Button>
-                </NavLink>
+                </Link>
               );
             })}
         </ButtonGroup>
@@ -268,14 +253,7 @@ const AppHeader = ({ page, routes, ...props }) => (
         </div>
       </DesktopNavigation>
       <MobileNavigation>
-        <Link
-          to={href({
-            widgetSrc: "buildhub.near/widget/app",
-            params: {
-              page: "home",
-            },
-          })}
-        >
+        <Link key={to} to={navigate({ to: "home" })}>
           <img
             style={{ width: 85, objectFit: "cover" }}
             src="https://ipfs.near.social/ipfs/bafkreihbwho3qfvnu4yss3eh5jrx6uxhrlzdgtdjyzyjrpa6odro6wdxya"
@@ -303,7 +281,7 @@ const AppHeader = ({ page, routes, ...props }) => (
                   return null;
                 }
                 return (
-                  <NavLink to={k} style={{ textDecoration: "none" }}>
+                  <Link key={k} to={navigate({ to: k })}>
                     <Button
                       key={k}
                       variant={page === k && "primary"}
@@ -312,7 +290,7 @@ const AppHeader = ({ page, routes, ...props }) => (
                       {route.init.icon && <i className={route.init.icon}></i>}
                       {route.init.name}
                     </Button>
-                  </NavLink>
+                  </Link>
                 );
               })}
           </ButtonGroup>

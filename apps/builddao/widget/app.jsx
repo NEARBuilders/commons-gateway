@@ -1,16 +1,38 @@
-const { page, tab, ...passProps } = props;
-
-const { routes } = VM.require("buildhub.near/widget/config.app") ?? {
-  routes: {},
+// type: "every.near/type/app", // this app cna have a view, every.near/wigget/app.view
+const config = {
+  param: "tab", // router param
+  routes: {
+    home: {
+      default: true, // default route
+      path: "buildhub.near/widget/page.home", // page to render
+      blockHeight: "final", // blockHeight to render at it
+      init: {
+        name: "Home"
+        // initial props to pass to page
+      },
+    },
+    feed: {
+      path: "buildhub.near/widget/page.feed",
+      blockHeight: "final",
+      init: {
+        name: "Feed"
+      },
+    },
+    resources: {
+      path: "buildhub.near/widget/page.resources",
+      blockHeight: "final",
+      init: {
+        name: "Resources"
+      },
+    },
+  },
 };
 
-const { AppLayout } = VM.require("buildhub.near/widget/template.AppLayout") || {
-  AppLayout: () => <></>,
+const { App } = VM.require("devs.near/widget/App") || {
+  App: () => <></>,
 };
 
-if (!page) page = Object.keys(routes)[0] || "home";
-
-const Root = styled.div`
+const Theme = styled.div`
   --stroke-color: rgba(255, 255, 255, 0.2);
   --bg-1: #0b0c14;
   --bg-1-hover: #17181c;
@@ -42,43 +64,6 @@ const Root = styled.div`
   --button-default-hover-bg: #17181c;
 `;
 
-function Router({ active, routes }) {
-  // this may be converted to a module at devs.near/widget/Router
-  const routeParts = active.split(".");
-
-  let currentRoute = routes;
-  let src = "";
-  let defaultProps = {};
-
-  for (let part of routeParts) {
-    if (currentRoute[part]) {
-      currentRoute = currentRoute[part];
-      src = currentRoute.path;
-
-      if (currentRoute.init) {
-        defaultProps = { ...defaultProps, ...currentRoute.init };
-      }
-    } else {
-      // Handle 404 or default case for unknown routes
-      return <p>404 Not Found</p>;
-    }
-  }
-
-  return (
-    <div key={active}>
-      <Widget
-        src={src}
-        props={{
-          currentPath: `/buildhub.near/widget/app?page=${page}`,
-          page: tab,
-          ...passProps,
-          ...defaultProps,
-        }}
-      />
-    </div>
-  );
-}
-
 const Container = styled.div`
   display: flex;
   height: 100%;
@@ -90,13 +75,40 @@ const Content = styled.div`
 `;
 
 return (
-  <Root>
-    <Container>
-      <AppLayout page={page} routes={routes} {...props}>
-        <Content>
-          <Router active={page} routes={routes} />
-        </Content>
-      </AppLayout>
-    </Container>
-  </Root>
+  <Theme>
+    <App
+      {...props} // what else might it need?
+      debug={false}
+      defaultPage="home"
+      config={config}
+      basePath={context.widgetSrc ?? "buildhub.near/widget/app"} // TODO: context from VM or custom component for Link
+      Template={({ children, navigate, Outlet, ...p }) => {
+        // we MUST pass "children" here, I wonder why?
+
+        // This should just be Template
+        const { AppLayout } = VM.require(
+          "every.near/widget/template.app" // choose your template, although this one is standard
+        ) || { AppLayout: () => <></> };
+
+        return (
+          <AppLayout
+            Header={({ page }) => {
+              return (
+                <Widget
+                  src={"buildhub.near/widget/components.navigation.header"}
+                  props={{ page, routes: config.routes, navigate, ...props }}
+                  loading={<div style={{ height: "100%", width: "100%" }} />}
+                />
+              );
+            }}
+            Footer={() => <></>}
+            {...p}
+          >
+            {/* // Outlet is helpful if you want to provide functions to the child */}
+            <Outlet {...p} />
+          </AppLayout>
+        );
+      }}
+    />
+  </Theme>
 );

@@ -19,8 +19,8 @@ const Content = styled.div`
 `;
 
 const App = ({
-  routes,
-  Layout,
+  config,
+  Template,
   basePath,
   page,
   defaultPage,
@@ -30,6 +30,7 @@ const App = ({
   routerParam,
   ...passProps
 }) => {
+  const { routes } = config;
   if (!page) page = Object.keys(routes)[0] || defaultPage;
 
   function navigate({ param, to }) {
@@ -48,7 +49,7 @@ const App = ({
   return (
     <Root key={basePath}>
       <Container>
-        <Layout
+        <Template
           page={page}
           routes={routes}
           navigate={navigate}
