@@ -104,6 +104,12 @@ const project = transformKeys(JSON.parse(data[""]));
 
 const profile = Social.getr(`${accountId}/profile`, "final");
 
+const [selectedTab, setSelectedTab] = useState("overview");
+
+const selectTabHandler = (tab) => {
+  setSelectedTab(tab);
+};
+
 return (
   <Root>
     <Container>
@@ -112,6 +118,8 @@ return (
         accountId={accountId}
         page={page}
         routes={routes}
+        currentTab={selectedTab}
+        setCurrentTab={selectTabHandler}
         project={project}
         id={id}
         {...props}

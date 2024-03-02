@@ -113,6 +113,8 @@ const ProjectLayout = ({
   routes,
   children,
   project,
+  currentTab,
+  setCurrentTab,
   id,
 }) => {
   const {
@@ -127,9 +129,9 @@ const ProjectLayout = ({
     learning,
   } = project;
 
-  const [address, app, type, titleUrl] = id.split("/");
+  const newRoutes = Object.keys(routes);
 
-  console.log("params", { app, type, titleUrl });
+  const [address, app, type, titleUrl] = id.split("/");
 
   if (!accountId) {
     return <p className="fw-bold text-white">No Account ID</p>;
@@ -201,7 +203,7 @@ const ProjectLayout = ({
       <Nav>
         <ul className="nav nav-pills nav-fill" id="pills-tab" role="tablist">
           {routes &&
-            Object.keys(routes).map((it) => {
+            newRoutes.map((it) => {
               const route = routes[it];
               if (route.hide) {
                 return null;
@@ -220,14 +222,15 @@ const ProjectLayout = ({
                     key={it}
                   >
                     <button
-                      className={`nav-link ${it === page ? "active" : ""}`}
-                      id={`pills-${id}-tab`}
+                      className={`nav-link ${it === currentTab ? "active" : ""}`}
+                      id={`pills-${it}-tab`}
                       data-bs-toggle="pill"
                       data-bs-target={`#pills-${it}`}
                       type="button"
                       role="tab"
                       aria-controls={`pills-${it}`}
-                      aria-selected={i === 0}
+                      aria-selected={it === currentTab}
+                      onClick={() => setCurrentTab(it)}
                     >
                       {it.slice(0, 1).toUpperCase() + it.slice(1)}
                     </button>
@@ -242,15 +245,20 @@ const ProjectLayout = ({
         style={{ marginTop: 8 }}
         id="pills-tabContent"
       >
-        <div
-          className="tab-pane fade show active"
-          id="pills-overview"
-          role="tabpanel"
-          aria-labelledby="pills-overview-tab"
-          key={tab}
-        >
-          {children}
-        </div>
+        {routes &&
+          newRoutes.map((it) =>
+            it === currentTab ? (
+              <div
+                className={`tab-pane fade ${it === currentTab ? "show active" : ""}`}
+                id={`pills-${it}`}
+                role="tabpanel"
+                aria-labelledby={`pills-${it}-tab`}
+                key={it}
+              >
+                {children}
+              </div>
+            ) : null
+          )}
       </div>
     </Container>
   );
