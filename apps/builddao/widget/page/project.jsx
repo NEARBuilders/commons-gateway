@@ -10,6 +10,10 @@ const { ProjectLayout } = VM.require(
   ProjectLayout: () => <></>,
 };
 
+// const { Router } = VM.require("devs.near/widget/Router") || {
+//   Router: () => <></>,
+// };
+
 const { id } = props;
 const extractNearAddress = (id) => {
   const parts = id.split("/");
@@ -18,6 +22,13 @@ const extractNearAddress = (id) => {
   }
   return "";
 };
+
+if (!id)
+  return (
+    <div className="text-center fw-bold text-white my-4">
+      Invalid project ID
+    </div>
+  );
 const accountId = extractNearAddress(id);
 
 const data = Social.get(id + "/**", "final");
@@ -48,7 +59,9 @@ function Router({ active, routes }) {
       }
     } else {
       // Handle 404 or default case for unknown routes
-      return <p>404 Not Found</p>;
+      return (
+        <p className="text-center fw-bold text-white my-4">404 Not Found</p>
+      );
     }
   }
 
