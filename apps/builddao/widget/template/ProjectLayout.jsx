@@ -201,34 +201,40 @@ const ProjectLayout = ({
       <Nav>
         <ul className="nav nav-pills nav-fill" id="pills-tab" role="tablist">
           {routes &&
-            Object.keys(routes).map((it) => (
-              <li className="nav-item" role="presentation" key={it}>
-                <Link
-                  to={href({
-                    widgetSrc: `buildhub.near/widget/app`,
-                    params: {
-                      page: "project",
-                      id: `${accountId}/${app}/${type}/${titleUrl}`,
-                      tab: it,
-                    },
-                  })}
-                  key={it}
-                >
-                  <button
-                    className={`nav-link ${it === page ? "active" : ""}`}
-                    id={`pills-${id}-tab`}
-                    data-bs-toggle="pill"
-                    data-bs-target={`#pills-${it}`}
-                    type="button"
-                    role="tab"
-                    aria-controls={`pills-${it}`}
-                    aria-selected={i === 0}
+            Object.keys(routes).map((it) => {
+              const route = routes[it];
+              if (route.hide) {
+                return null;
+              }
+              return (
+                <li className="nav-item" role="presentation" key={it}>
+                  <Link
+                    to={href({
+                      widgetSrc: `buildhub.near/widget/app`,
+                      params: {
+                        page: "project",
+                        id: `${accountId}/${app}/${type}/${titleUrl}`,
+                        tab: it,
+                      },
+                    })}
+                    key={it}
                   >
-                    {it.slice(0, 1).toUpperCase() + it.slice(1)}
-                  </button>
-                </Link>
-              </li>
-            ))}
+                    <button
+                      className={`nav-link ${it === page ? "active" : ""}`}
+                      id={`pills-${id}-tab`}
+                      data-bs-toggle="pill"
+                      data-bs-target={`#pills-${it}`}
+                      type="button"
+                      role="tab"
+                      aria-controls={`pills-${it}`}
+                      aria-selected={i === 0}
+                    >
+                      {it.slice(0, 1).toUpperCase() + it.slice(1)}
+                    </button>
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       </Nav>
       <div
