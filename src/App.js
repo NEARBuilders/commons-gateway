@@ -235,7 +235,15 @@ function App() {
           </Switch>
         </Router>
       </EthersProviderContext.Provider>
-      <Analytics />
+      <Analytics
+        beforeSend={(e) => {
+          const url = new URL(e.url);
+          return {
+            ...e,
+            url: url.toString(),
+          };
+        }}
+      />
     </div>
   );
 }
