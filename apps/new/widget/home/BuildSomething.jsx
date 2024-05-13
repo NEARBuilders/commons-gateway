@@ -366,7 +366,10 @@ const GridRight = styled.div`
       rgba(62, 30, 107, 0.4) 73.04%
     );
   p {
-    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
     text-overflow: ellipsis;
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: rgba(255, 255, 255, 0.08);
@@ -376,6 +379,44 @@ const GridRight = styled.div`
     font-weight: 500;
     line-height: 100%; /* 64px */
     letter-spacing: -0.64px;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10.129px;
+    align-self: stretch;
+    h2 {
+      overflow: hidden;
+      color: var(--ECA227, #eca227);
+      font-family: Poppins;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%; /* 60px */
+      letter-spacing: -0.4px;
+      span {
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        color: var(--Color-Neutral-white, #fff);
+        font-family: Poppins;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%;
+        letter-spacing: -0.4px;
+      }
+    }
+    p {
+      color: #b0b0b0;
+      font-family: Poppins;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%; /* 19.6px */
+      letter-spacing: -0.14px;
+    }
   }
 `;
 const BuildSomething = () => {
@@ -446,7 +487,19 @@ const BuildSomething = () => {
               />
             </EventsGrid>
           </GridLeft>
-          <GridRight>test</GridRight>
+          <GridRight>
+            <p>+++++++++</p>
+            <p>+++++++++</p>
+            <div>
+              <h2>
+                & <span>More</span>
+              </h2>
+              <p>
+                Our community continues to build, soon we will have more
+                incredible resources available.
+              </p>
+            </div>
+          </GridRight>
         </BentoDownGrid>
       </BentoGrid>
     </Container>
