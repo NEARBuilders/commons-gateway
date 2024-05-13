@@ -1,137 +1,88 @@
-// const words = [
-//   "projects",
-//   "tools",
-//   "solutions",
-//   "teams",
-//   "dreams",
-//   "visions",
-//   "systems",
-//   "ecosystems",
-//   "commons",
-//   "futures",
-// ];
-
-// const Heading = styled.h1`
-//   color: var(--FFFFFF, #fff);
-//   font-family: Poppins;
-//   font-size: 72px;
-//   font-style: normal;
-//   font-weight: 500;
-//   letter-spacing: -2.88px;
-//   height: 6.5rem;
-//   background: linear-gradient(
-//     86.6deg,
-//     #eca227 -41.01%,
-//     rgba(242, 103, 4, 0.9) 49.3%,
-//     rgba(74, 33, 165, 0.41) 87.03%
-//   );
-//   -webkit-background-clip: text;
-//   background-clip: text;
-//   color: transparent; /* Hide the original text */
-//   position: absolute;
-//   left: 0;
-//   top: ${(props) => props.top};
-//   animation: scrollWord 3s ease infinite;
-//   animation-delay: 1s;
-// `;
-
-// const WordWrapper = styled.div`
-//   overflow-y: hidden;
-//   position: relative;
-//   flex-grow: 1;
-//   flex-basis: 0;
-//   width: 32rem;
-//   height: 5.5rem;
-
-//   @keyframes scrollWord {
-//     0% {
-//       transform: translateY(0px);
-//     }
-//     100% {
-//       transform: translateY(-5.5rem);
-//     }
-//   }
-// `;
-
-// const [currentWordIndex, setCurrentWordIndex] = useState(0);
-
-// useEffect(() => {
-//   const interval = setInterval(() => {
-//     setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-//   }, 4000); // Change the interval as needed (in milliseconds)
-
-//   return () => clearInterval(interval);
-// }, []);
-
-// return (
-//   <WordWrapper>
-//     <Heading top="0">{words[currentWordIndex]}</Heading>
-//     <Heading top="100%">{words[(currentWordIndex + 1) % words.length]}</Heading>
-//   </WordWrapper>
-// );
-
 const words = [
-  "projects",
-  "tools",
-  "solutions",
-  "teams",
-  "dreams",
-  "visions",
-  "systems",
-  "ecosystems",
-  "commons",
-  "futures",
+  "Projects",
+  "Tools",
+  "Solutions",
+  "Teams",
+  "Dreams",
+  "Visions",
+  "Systems",
+  "Ecosystems",
+  "Commons",
+  "Futures",
 ];
 
-const Heading = styled.h1`
-  color: var(--FFFFFF, #fff);
-  font-family: Poppins;
-  font-size: 72px;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -2.88px;
-  height: 6.5rem;
-  background: linear-gradient(
-    86.6deg,
-    #eca227 -41.01%,
-    rgba(242, 103, 4, 0.9) 49.3%,
-    rgba(74, 33, 165, 0.41) 87.03%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; /* Hide the original text */
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0; /* Initially hide both headings */
-  animation: scrollWord 3s ease infinite;
-`;
-
-const WordWrapper = styled.div`
-  overflow-y: hidden;
+const ScrollingContainer = styled.div`
+  height: 5.5rem;
   position: relative;
+  overflow: hidden;
+  width: 30em;
   flex-grow: 1;
   flex-basis: 0;
-  width: 32rem;
-  height: 5.5rem;
 
-  counter-reset: wordIndex; /* Reset counter for each WordWrapper */
-
-  @keyframes scrollWord {
-    from {
-      counter-increment: wordIndex; /* Increment counter on animation start */
+  span {
+    position: absolute;
+    top: 0;
+    animation: slide 15s infinite;
+    animation-delay: 750ms;
+    font-family: Poppins, sans-serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 120%; /* 86.4px */
+    letter-spacing: -2.88px;
+    background: linear-gradient(
+      87deg,
+      #eca227 -41.01%,
+      rgba(242, 103, 4, 0.9) 49.3%,
+      rgba(74, 33, 165, 0.41) 87.03%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  @keyframes slide {
+    0% {
+      top: 0;
     }
-    to {
-      counter-increment: wordIndex; /* Increment counter on animation end */
+    10% {
+      top: -1.2em;
+    }
+    20% {
+      top: -2.4em;
+    }
+    30% {
+      top: -3.6em;
+    }
+    40% {
+      top: -4.8em;
+    }
+    50% {
+      top: -6em;
+    }
+    60% {
+      top: -7.2em;
+    }
+    70% {
+      top: -8.4em;
+    }
+    80% {
+      top: -9.6em;
+    }
+    90% {
+      top: -10.8em;
     }
   }
 `;
 
-const [currentWordIndex, setCurrentWordIndex] = useState(0);
-
 return (
-  <WordWrapper>
-    <Heading style={{ counter: currentWordIndex }}>{words[0]}</Heading>
-    <Heading style={{ counter: currentWordIndex + 1 }}>{words[1]}</Heading>
-  </WordWrapper>
+  <ScrollingContainer>
+    <span>
+      {words.map((word, i) => (
+        <>
+          {word}
+          {i !== words.length - 1 && <br />}
+        </>
+      ))}
+    </span>
+  </ScrollingContainer>
 );

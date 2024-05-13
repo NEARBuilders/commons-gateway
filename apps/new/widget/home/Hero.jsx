@@ -2,197 +2,330 @@ const { Button } = VM.require("buildhub.near/widget/components") || {
   Button: () => <></>,
 };
 
-const HeaderContainer = styled.div`
-  width: 100%;
-  /* height: 840px; */
-  background: black;
+const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
-const HeaderHeading = styled.div`
-  /* height: 202px; */
-  width: 100%;
+const HeadingSection = styled.div`
+  padding: 80px 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: black;
   gap: 24px;
-  padding: 120px 80px;
 
-  p {
-    font-family: Poppins;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
-    text-align: left;
-    color: var(--A0A0A0, hsla(0, 0%, 63%, 1));
-    margin: 0;
-    padding: 0;
+  .hero-button {
+    position: relative;
+    color: black;
+    overflow: hidden;
+    background: linear-gradient(
+      87deg,
+      #eca227 1.24%,
+      #fc8119 55.76%,
+      #9747ff 108.89%
+    );
+    &:hover {
+      background: linear-gradient(
+        -87deg,
+        #eca227 1.24%,
+        #fc8119 55.76%,
+        #9747ff 108.89%
+      );
+    }
   }
 `;
 
 const Heading = styled.h1`
-  color: var(--FFFFFF, #fff);
-  font-family: Poppins;
+  color: white;
+  font-family: Poppins, sans-serif;
+  text-align: right;
   font-size: 72px;
-  font-style: normal;
   font-weight: 500;
   line-height: 120%; /* 86.4px */
   letter-spacing: -2.88px;
-  background: linear-gradient(
-    86.6deg,
-    #eca227 -41.01%,
-    rgba(242, 103, 4, 0.9) 49.3%,
-    rgba(74, 33, 165, 0.41) 87.03%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; /* Hide the original text */
+  margin: 0;
+  flex-grow: 1;
+  flex-basis: 0;
 `;
 
-const HeaderButtons = styled.div`
-  width: 293px;
-  height: 40px;
-  display: flex;
-  gap: 24px;
+const Subheading = styled.h2`
+  color: #a0a0a0;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  line-height: 140%;
 `;
 
-const HeaderContent = styled.div`
-  display: flex;
-  padding: 24px;
+const CardSection = styled.div`
+  padding: 0 54px 94px 54px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+`;
 
-  p {
-    color: hsla(0, 0%, 47%, 1);
+const Card = styled.div`
+  .card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    @keyframes floating {
+      0%,
+      100% {
+        transform: translateY(0%);
+      }
+
+      50% {
+        transform: translateY(-5%);
+      }
+    }
+
+    .logo-hover {
+      width: 188px;
+      object-fit: cover;
+      position: absolute;
+      top: -50px;
+      right: -25px;
+      animation: floating 2s infinite ease-in-out;
+    }
+  }
+  border-radius: 24px;
+  background: #1e1e1e;
+
+  .subheading {
+    color: #666;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
     margin: 0;
-    padding: 0;
   }
-  h4 {
+
+  .heading {
     color: #fff;
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 130%; /* 31.2px */
+    letter-spacing: -0.48px;
+  }
+
+  .title {
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 130%; /* 23.4px */
+    letter-spacing: -0.36px;
   }
 `;
 
-return (
-  <HeaderContainer>
-    <HeaderHeading>
-      <div className="d-flex align-items-center gap-3">
-        <Heading
-          style={{
-            backtground: "black",
-            color: "white",
-            flexShrink: 0,
-            flexGrow: 1,
-            flexBasis: 0,
-            margin: 0,
-            textAlign: "right",
-          }}
-        >
-          Let's build
-        </Heading>
-        <Widget src="new/widget/home.MovingHeader" />
-      </div>
-      <div>
-        <p
-          style={{
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          Designed to support builders in a multi-chain ecosystem.
-        </p>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          gap: "24px",
-        }}
-      >
-        <Button
-          variant="outline"
-          style={{
-            background:
-              "linear-gradient(86.68deg, #ECA227 1.24%, #FC8119 55.76%, #9747FF 108.89%)",
-            border: "none",
-            color: "black",
-            padding: "10px 20px 10px 20px",
-          }}
-        >
-          Start Building
-        </Button>
-        <Button
-          variant="outline"
-          style={{
-            background: "hsla(233, 10%, 15%, 1)",
-            border: "none",
-            color: "white",
-            padding: "10px 20px 10px 20px",
-          }}
-        >
-          Explore Apps
-        </Button>
-      </div>
-    </HeaderHeading>
-    <HeaderContent>
-      <div
-        style={{
-          width: "437px",
-          height: "480px",
-          paddingleft: "53px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "8px",
-          borderRadius: "24px",
-          opacity: "0px",
-          positition: "relative",
-        }}
-      >
-        <div
-          style={{
-            width: "437px",
-            height: "255px",
+const HeroCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  width: 50%;
+  border-radius: 24px;
+  background: #4a21a5;
+  background-image: url("https://ipfs.near.social/ipfs/bafkreidafbhvci5cn4objgslthg3lpggxs47fi4h7s4tjvlbjucczu7ihe");
+  background-size: cover;
 
-            borderRadius: "24px 24px 0px 0px",
-            padding: "24px",
-            opacity: "0px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "24px",
-            background: "var(--1E1E1E, hsla(0, 0%, 12%, 1))",
-          }}
-        >
-          <div>
-            <p>What do we build?</p>
-            <div>
-              <h4>Supporting useful integrations</h4>
-              <p>
-                We build versatile applications, including Canvas, Profiles,
-                Video, Events, Tasks, and more, support and practical examples.
-              </p>
-            </div>
-          </div>
-          <div>
-            <Button
-              variant="primary"
-              style={{
-                background: "hsla(37, 84%, 54%, 1) !important",
-              }}
-            >
-              See Library
-            </Button>
-          </div>
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            background:
-              "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 45.8%, #000 122.22%)",
-          }}
-        >
-          hello
-        </div>
-      </div>
-      <div></div>
-      <div></div>
-    </HeaderContent>
-  </HeaderContainer>
+  .svg-container {
+    display: flex;
+    width: max-content;
+    padding: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+    background: rgba(30, 30, 30, 0.3);
+  }
+
+  .title {
+    color: #ededed;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    line-height: 130%; /* 26px */
+    letter-spacing: -0.4px;
+  }
+
+  .content {
+    color: #ededed;
+    font-family: Poppins, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 130%; /* 62.4px */
+    letter-spacing: -0.96px;
+  }
+`;
+
+const BuilderHat = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M2 18C2 18.2652 2.10536 18.5196 2.29289 18.7071C2.48043 18.8946 2.73478 19 3 19H21C21.2652 19 21.5196 18.8946 21.7071 18.7071C21.8946 18.5196 22 18.2652 22 18V16C22 15.7348 21.8946 15.4804 21.7071 15.2929C21.5196 15.1054 21.2652 15 21 15H3C2.73478 15 2.48043 15.1054 2.29289 15.2929C2.10536 15.4804 2 15.7348 2 16V18Z"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10 10V5C10 4.73478 10.1054 4.48043 10.2929 4.29289C10.4804 4.10536 10.7348 4 11 4H13C13.2652 4 13.5196 4.10536 13.7071 4.29289C13.8946 4.48043 14 4.73478 14 5V10"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4 15V12C4 10.4087 4.63214 8.88258 5.75736 7.75736C6.88258 6.63214 8.4087 6 10 6"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14 6C15.5913 6 17.1174 6.63214 18.2426 7.75736C19.3679 8.88258 20 10.4087 20 12V15"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
 );
+
+const Hero = () => {
+  return (
+    <HeroContainer>
+      <HeadingSection>
+        <div className="d-flex justify-content-between gap-3">
+          <Heading>Let's Build</Heading>
+          <Widget src="${config_account}/widget/home.MovingHeader" />
+        </div>
+        <Subheading>
+          Designed to support builders in a multi-chain ecosystem.
+        </Subheading>
+        <div className="d-flex align-items-center gap-4">
+          <Button className="hero-button">Start Project</Button>
+          <Button>Explore Tools</Button>
+        </div>
+      </HeadingSection>
+      <CardSection>
+        <Card>
+          <div className="card-content d-flex flex-column gap-2">
+            <p className="subheading">What do we build?</p>
+            <h3 className="heading">Supporting useful integrations</h3>
+            <p className="subheading">
+              We build versatile applications, including Canvas, Profiles,
+              Video, Events, Tasks, and more, support and practical examples.
+            </p>
+          </div>
+          <Button
+            variant="primary"
+            className="mx-4"
+            style={{ width: "max-content" }}
+          >
+            See Library
+          </Button>
+          <img
+            src="https://ipfs.near.social/ipfs/bafkreiaswjxjtiwthuzyvhn3l2llxat5hlb72sytgeipmifdllhmbigos4"
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              marginTop: -104,
+              borderRadius: "0 0 24px 24px",
+            }}
+          />
+        </Card>
+        <Card style={{ overflow: "hidden", background: "transparent" }}>
+          <div className="p-3 d-flex align-items-center gap-2 mb-3 justify-content-center">
+            <span className="title">Explore</span>
+            <div style={{ height: 1, flexGrow: 1, background: "white" }} />
+            <span className="title">Contribute</span>
+            <div style={{ height: 1, flexGrow: 1, background: "white" }} />
+            <span className="title">Develop</span>
+          </div>
+          <div className="d-flex flex-column gap-2 rounded-4 overflow-hidden opacity-50">
+            <Widget
+              src="${config_account}/widget/home.hero.ScrollingText"
+              props={{
+                direction: "normal",
+                words: [
+                  "Funding Program",
+                  "Founders",
+                  "Project Page",
+                  "Engineering",
+                ],
+              }}
+            />
+            <Widget
+              src="${config_account}/widget/home.hero.ScrollingText"
+              props={{
+                direction: "reverse",
+                words: ["UI/UX Designers", "Roles", "Developers", "Support"],
+              }}
+            />
+            <Widget
+              src="${config_account}/widget/home.hero.ScrollingText"
+              props={{
+                direction: "normal",
+                words: [
+                  "Roles",
+                  "Project Managers",
+                  "Earn Rewards",
+                  "Open Source",
+                ],
+              }}
+            />
+          </div>
+          <div className="d-flex gap-2 mt-5">
+            <img
+              src="https://ipfs.near.social/ipfs/bafkreihgdagkoa2z5wkl5z34oegifo2spqnowq42hyehqib6ibw7hfrx6q"
+              style={{ width: "50%", objectFit: "cover" }}
+            />
+            <HeroCard>
+              <div className="svg-container">
+                <BuilderHat />
+              </div>
+              <p className="title m-0">Builders</p>
+              <p className="content m-0">70+</p>
+            </HeroCard>
+          </div>
+        </Card>
+        <Card>
+          <div className="card-content d-flex flex-column gap-2">
+            <img
+              src="https://ipfs.near.social/ipfs/bafkreige23waoznoljipikqdmtcuupniatrxftyy5lglua63nacjpgw5se"
+              className="logo-hover"
+            />
+            <p className="subheading">Contribution</p>
+            <h3 className="heading">
+              Come build <br />
+              the future with us
+            </h3>
+            <p className="subheading">
+              Join Build DAO's funding program and turn your engagement into
+              adoption.
+            </p>
+          </div>
+          <Button className="mx-4" style={{ width: "max-content" }}>
+            Join Now
+          </Button>
+          <img
+            src="https://ipfs.near.social/ipfs/bafkreiei26tw4c6ndhyugyku4f22mfnbea4ikhmyefboxqyxja3rqcvizm"
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              marginTop: "-27px",
+              borderRadius: "0 0 24px 24px",
+            }}
+          />
+        </Card>
+      </CardSection>
+    </HeroContainer>
+  );
+};
+
+return { Hero };
