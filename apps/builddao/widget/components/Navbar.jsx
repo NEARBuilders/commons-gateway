@@ -40,7 +40,7 @@ const NavContainer = styled.div`
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); /* Add inset shadow to simulate depth */
     transform: translateY(2px); /* Shift the button down */
     background-color: #eca227; /* Change background color */
-    border: 1px solid #eda227;
+    border: 1px solid #fff;
 
     img {
       filter: brightness(0) invert(1);
