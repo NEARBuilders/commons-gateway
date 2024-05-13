@@ -78,6 +78,7 @@ const Heading = styled.h2`
   font-weight: 500;
   line-height: 120%;
   letter-spacing: -2.88px;
+  text-align: center;
   margin: 0;
   span {
     color: #793bd1;
