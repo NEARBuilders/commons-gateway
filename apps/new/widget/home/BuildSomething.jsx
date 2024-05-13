@@ -2,7 +2,15 @@ const { Button } = VM.require("buildhub.near/widget/components") || {
   Button: () => <></>,
 };
 
+const bg =
+  "https://ipfs.near.social/ipfs/bafkreigx3zu656wwo56gqxtlzpj5dchkoyzvteal6ylo7a65xznwphx2ri";
+
+const noise =
+  "https://onedrive.live.com/embed?resid=DB95EB47BE356546%215827&authkey=%21AMNyTJWjGaSnGqQ&width=5760&height=3072";
+
 const Container = styled.div`
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(
     103deg,
     #161616 63.12%,
@@ -114,23 +122,24 @@ const ExploreBGImage = styled.img`
   width: 117.982px;
   height: 59.927px;
 
-  left: 670px;
-  top: 63.264px;
+  left: 570px;
+  top: 91px;
 `;
 const ExploreTruckBGImage = styled.img`
   position: absolute;
   width: 141px;
   height: 103px;
-  right: 106.064px;
+  right: 80px;
   bottom: 2.7px;
 `;
 
 const Explore = styled.div`
+  z-index: 2;
   position: relative;
-  grid-column: 8 span / 8 span;
+  grid-column: 7 span / 7 span;
   display: flex;
   padding: 20.258px;
-  padding-right: 200px;
+  padding-right: 250px;
   flex-direction: column;
   gap: 6.753px;
   border-radius: 16.881px;
@@ -173,8 +182,9 @@ const Explore = styled.div`
   }
 `;
 const Canvas = styled.div`
+  z-index: 2;
   display: flex;
-  grid-column: 4 span / 4 span;
+  grid-column: 5 span / 5 span;
   padding: 20.258px;
   flex-direction: column;
   /* justify-content: center;
@@ -218,9 +228,162 @@ const BentoBottomGrid = styled.div`
   gap: 16px;
 `;
 
+// images
+
+const BGImg = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.7);
+  top: -111px;
+  left: -12px;
+  z-index: 0;
+`;
+
+const NoiseBG = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.5;
+  background: url(${noise}) lightgray 0% 0% / 21.582169830799103px
+    21.582169830799103px repeat;
+  mix-blend-mode: color-burn;
+`;
+
+const Lines = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
+
+// Grids Bottom
+
+const BentoDownGrid = styled.div`
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+`;
+const GridLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+const EmbedsGrid = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+const EventsGrid = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+const GridContainer = styled.div`
+  z-index: 2;
+  display: flex;
+  max-width: 465px;
+  height: 119.113px;
+  padding: 20.258px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6.753px;
+  flex: 1 0 0;
+  border-radius: 16.881px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  p {
+    color: var(--b-0-b-0-b-0, #b0b0b0);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: -0.14px;
+  }
+`;
+const GridContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10.129px;
+  align-self: stretch;
+  h4 {
+    overflow: hidden;
+    color: var(--ffffff, #fff);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    letter-spacing: -0.2px;
+  }
+`;
+
+const GridBlocks = ({ icon, heading, text }) => {
+  return (
+    <GridContainer>
+      <GridContent>
+        <Button
+          type="icon"
+          style={{
+            borderRadius: "30%",
+          }}
+        >
+          {icon}
+        </Button>
+        <h4>{heading}</h4>
+      </GridContent>
+      <p>{text}</p>
+    </GridContainer>
+  );
+};
+const GridRight = styled.div`
+  z-index: 2;
+  display: flex;
+  width: 384px;
+  height: 252px;
+  padding: 20.258px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6.753px;
+  flex-shrink: 0;
+  border-radius: 16.881px;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    linear-gradient(
+      136deg,
+      rgba(121, 59, 209, 0.4) -2.89%,
+      rgba(62, 30, 107, 0.4) 73.04%
+    );
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.08);
+    font-family: Poppins;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 64px */
+    letter-spacing: -0.64px;
+  }
+`;
 const BuildSomething = () => {
   return (
     <Container>
+      <BGImg src={bg} />
+      <NoiseBG src={noise} />
+      <Lines src="https://ipfs.near.social/ipfs/bafkreicgmtuqehogbwk73zgf7rnu6f2wx3oj7hzxsrbd7v6pmvh55oe7fq" />
       <Title>
         <Heading>
           Build something <span>today!</span>
@@ -256,13 +419,35 @@ const BuildSomething = () => {
             </p>
           </Canvas>
         </BentoTopGrid>
-        <BentoBottomGrid>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-        </BentoBottomGrid>
+        <BentoDownGrid>
+          <GridLeft>
+            <EmbedsGrid>
+              <GridBlocks
+                icon={Embeds}
+                heading="Embeds"
+                text="Enhance everything with custom interoperable embeds, your personal portal to your favorite code, where ever you want it."
+              />
+              <GridBlocks
+                icon={Embeds}
+                heading="Video App"
+                text="Join our video.app or create any video app with an easy to use tool built on NEAR's."
+              />
+            </EmbedsGrid>
+            <EventsGrid>
+              <GridBlocks
+                icon={CanvasSVG}
+                heading="Event App"
+                text="Create any events app with an easy to use tool built on NEAR's Blockchain Operating System."
+              />
+              <GridBlocks
+                icon={CanvasSVG}
+                heading="Badge App"
+                text="mint, manage, and share your custom badges."
+              />
+            </EventsGrid>
+          </GridLeft>
+          <GridRight>test</GridRight>
+        </BentoDownGrid>
       </BentoGrid>
     </Container>
   );

@@ -3,6 +3,10 @@ const { Button } = VM.require("buildhub.near/widget/components") || {
 };
 const CTABG =
   "https://ipfs.near.social/ipfs/bafkreigoa47u7cn7mibiq2vfb7jrrjkvl3ho736x6r4rpo6ajcqmnsc64q";
+
+const noise =
+  "https://onedrive.live.com/embed?resid=DB95EB47BE356546%215827&authkey=%21AMNyTJWjGaSnGqQ&width=5760&height=3072";
+
 const BuildDAOSVG = () => {
   return (
     <svg
@@ -857,6 +861,7 @@ const HammerSVG = () => {
 };
 
 const MainContainer = styled.div`
+  position: relative;
   background: black;
   padding: 72px 48px;
 `;
@@ -972,10 +977,20 @@ const CtaText = styled.div`
     margin: 0;
   }
 `;
-
+const NoiseBG = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.15;
+  background: url(${noise}) lightgray 0% 0% / 12.67087310552597px
+    12.67087310552597px repeat;
+  mix-blend-mode: color-burn;
+`;
 const CTA = () => {
   return (
     <MainContainer>
+      <NoiseBG src={noise} />
       <Container>
         <Ellipse_1 />
         <Ellipse_2 />

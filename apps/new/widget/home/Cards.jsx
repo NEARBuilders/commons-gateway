@@ -8,6 +8,9 @@ const FeedbackImage =
 const RewardsImage =
   "https://ipfs.near.social/ipfs/bafkreibvr2pf2pvxi4bjdogyxo7elfduhresivqg3msqnegrbxy5laj52u";
 
+const noise =
+  "https://onedrive.live.com/embed?resid=DB95EB47BE356546%215827&authkey=%21AMNyTJWjGaSnGqQ&width=5760&height=3072";
+
 const TruckSVG = () => {
   return (
     <svg
@@ -977,13 +980,13 @@ const FeedbackText = styled.div`
   padding-top: 56px;
   padding-right: 224px;
   flex-shrink: 0;
-  z-index: 1;
+  z-index: 2;
 `;
 const TextFeedback = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  z-index: 1;
+  z-index: 2;
   h3 {
     color: var(--FFFFFF, #fff);
     font-family: Poppins;
@@ -1049,6 +1052,17 @@ const TruckDiv = styled.div`
   z-index: 0;
 `;
 
+const NoiseBG = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.6;
+  background: url(${noise}) lightgray 0% 0% / 7.652240991592407px
+    7.652240991592407px repeat;
+  mix-blend-mode: color-burn;
+`;
+
 const Cards = () => {
   return (
     <Container>
@@ -1073,6 +1087,7 @@ const Cards = () => {
           <EarnRewardImage src={RewardsImage} />
         </EarnRewards>
         <Feedback>
+          <NoiseBG src={noise} />
           <Ellipse1 />
           <FeedbackText>
             <TextFeedback>
@@ -1091,6 +1106,7 @@ const Cards = () => {
             </div>
           </FeedbackText>
           <Ellipse2 />
+
           <FeedbackBackground src={FeedbackImage} />
           <TruckDiv>
             <TruckSVG />
