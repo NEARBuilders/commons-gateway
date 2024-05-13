@@ -349,6 +349,7 @@ const GridRight = styled.div`
   width: 384px;
   height: 252px;
   padding: 20.258px;
+  overflow: hidden;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
@@ -370,7 +371,7 @@ const GridRight = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: rgba(255, 255, 255, 0.08);
     font-family: Poppins;
@@ -379,6 +380,7 @@ const GridRight = styled.div`
     font-weight: 500;
     line-height: 100%; /* 64px */
     letter-spacing: -0.64px;
+    margin: 0;
   }
   div {
     display: flex;
@@ -407,6 +409,7 @@ const GridRight = styled.div`
         line-height: 150%;
         letter-spacing: -0.4px;
       }
+      margin: 0;
     }
     p {
       color: #b0b0b0;
@@ -416,6 +419,7 @@ const GridRight = styled.div`
       font-weight: 400;
       line-height: 140%; /* 19.6px */
       letter-spacing: -0.14px;
+      margin: 0;
     }
   }
 `;
