@@ -105,11 +105,31 @@ const Text = styled.p`
 const BentoGrid = styled.div`
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 2rem;
   flex-wrap: wrap;
-  padding-left: 48px;
-  padding-right: 48px;
-  padding-bottom: 72px;
+  padding: 3rem;
+  padding-top: 0;
+
+  @keyframes floating {
+    0%,
+    100% {
+      transform: translateY(0%);
+    }
+
+    50% {
+      transform: translateY(-5%);
+    }
+  }
+
+  .logo-hover {
+    width: 72px;
+    object-fit: cover;
+    position: absolute;
+    bottom: 256px;
+    right: 24px;
+    z-index: 5;
+    animation: floating 2s infinite ease-in-out;
+  }
 `;
 const BentoTopGrid = styled.div`
   display: grid;
@@ -122,15 +142,15 @@ const ExploreBGImage = styled.img`
   width: 117.982px;
   height: 59.927px;
 
-  left: 570px;
-  top: 91px;
+  right: 0;
+  bottom: 0;
 `;
 const ExploreTruckBGImage = styled.img`
   position: absolute;
   width: 141px;
   height: 103px;
   right: 80px;
-  bottom: 2.7px;
+  bottom: 0;
 `;
 
 const Explore = styled.div`
@@ -261,12 +281,13 @@ const Lines = styled.img`
 // Grids Bottom
 
 const BentoDownGrid = styled.div`
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
 `;
 const GridLeft = styled.div`
   display: flex;
+  grid-column: span 2 / span 2;
   flex-direction: column;
   gap: 16px;
 `;
@@ -282,15 +303,14 @@ const EventsGrid = styled.div`
 const GridContainer = styled.div`
   z-index: 2;
   display: flex;
-  max-width: 465px;
-  height: 119.113px;
-  padding: 20.258px;
+  min-height: 119.113px;
+  padding: 1.25rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6.753px;
+  gap: 0.5rem;
   flex: 1 0 0;
-  border-radius: 16.881px;
+  border-radius: 1rem;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.8) 0%,
@@ -300,8 +320,6 @@ const GridContainer = styled.div`
     color: var(--b-0-b-0-b-0, #b0b0b0);
     font-family: Poppins;
     font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
     line-height: 140%; /* 19.6px */
     letter-spacing: -0.14px;
   }
@@ -335,7 +353,7 @@ const GridBlocks = ({ icon, heading, text }) => {
             borderRadius: "30%",
           }}
         >
-          {icon}
+          <icon />
         </Button>
         <h4>{heading}</h4>
       </GridContent>
@@ -345,17 +363,13 @@ const GridBlocks = ({ icon, heading, text }) => {
 };
 const GridRight = styled.div`
   z-index: 2;
-  display: flex;
-  width: 384px;
-  height: 252px;
-  padding: 20.258px;
   overflow: hidden;
+  display: flex;
+  position: relative;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  gap: 6.753px;
   flex-shrink: 0;
-  border-radius: 16.881px;
+  border-radius: 1rem;
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.56) 0%,
@@ -366,11 +380,16 @@ const GridRight = styled.div`
       rgba(121, 59, 209, 0.4) -2.89%,
       rgba(62, 30, 107, 0.4) 73.04%
     );
-  p {
+
+  .plus-bg {
+    color: #120a1c;
+    line-height: 50%;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 1rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-
     /* text-overflow: ellipsis; */
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: rgba(255, 255, 255, 0.08);
@@ -382,7 +401,10 @@ const GridRight = styled.div`
     letter-spacing: -0.64px;
     margin: 0;
   }
+
   div {
+    padding: 1.25rem;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -492,8 +514,8 @@ const BuildSomething = () => {
             </EventsGrid>
           </GridLeft>
           <GridRight>
-            <p>+++++++++</p>
-            <p>+++++++++</p>
+            <p className="plus-bg">+++++++++</p>
+            <p className="plus-bg">+++++++++</p>
             <div>
               <h2>
                 & <span>More</span>
@@ -505,6 +527,10 @@ const BuildSomething = () => {
             </div>
           </GridRight>
         </BentoDownGrid>
+        <img
+          src="https://ipfs.near.social/ipfs/bafkreige23waoznoljipikqdmtcuupniatrxftyy5lglua63nacjpgw5se"
+          className="logo-hover"
+        />
       </BentoGrid>
     </Container>
   );

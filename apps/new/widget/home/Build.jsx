@@ -55,24 +55,23 @@ const GettingStartedSVG = () => {
 const Container = styled.div`
   background: black;
   width: 100%;
-  /* height: 404px; */
   padding: 48px 72px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
 `;
 
 const BuildContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 613px;
   flex-shrink: 0;
 
   h2 {
     color: var(--FFFFFF, #fff);
     font-family: Poppins;
     font-size: 58px;
-    font-style: normal;
     font-weight: 500;
     line-height: 120%; /* 86.4px */
     letter-spacing: -2.88px;
@@ -85,7 +84,6 @@ const BuildContainer = styled.div`
       -webkit-text-fill-color: transparent;
       font-family: Poppins;
       font-size: 58px;
-      font-style: normal;
       font-weight: 500;
       line-height: 120%;
       letter-spacing: -2.88px;
@@ -98,32 +96,25 @@ const BuildContainer = styled.div`
     color: var(--Color-Neutral-neutral, #666);
     font-family: Poppins;
     font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   }
 `;
 
 const Cards = styled.div`
-  padding-top: 43px;
-  max-width: 615px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 34px;
-  flex-shrink: 0;
 `;
 
 const BosContainer = styled.div`
   border-radius: 24px;
+  grid-column: span 2 / span 2;
   background: var(--1E1E1E, #1e1e1e);
   display: flex;
-  gap: 58.71px;
+  justify-content: space-between;
 `;
 
 const Text = styled.div`
-  padding-top: 32px;
-  padding-left: 40px;
-  padding-bottom: 32px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -150,13 +141,14 @@ const Text = styled.div`
 `;
 
 const BosVector = styled.img`
-  width: 229.604px;
-  height: 178px;
+  max-width: 229.604px;
+  height: 100%;
+  object-fit: cover;
   flex-shrink: 0;
 `;
 
 const GettingStarted = styled.div`
-  padding: 32px 74px 37px 41px;
+  padding: 32px;
   border-radius: 24px;
   background: #f5f5f5;
   display: flex;
@@ -174,7 +166,7 @@ const GettingStarted = styled.div`
   }
 `;
 const LearnMore = styled.div`
-  padding: 32px 74px 37px 41px;
+  padding: 32px;
   border-radius: 24px;
   border: 1px solid var(--4D4D4D, #4d4d4d);
   background: #000;
@@ -220,38 +212,30 @@ const Build = () => {
           </Text>
           <BosVector src={bosImage} />
         </BosContainer>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "15px",
-          }}
-        >
-          <GettingStarted>
-            <p>Getting Started</p>
-            <Button
-              style={{
-                gap: "8px",
-                borderRadius: "10px",
-              }}
-            >
-              <GettingStartedSVG />
-              Quickstart Guide
-            </Button>
-          </GettingStarted>
-          <LearnMore>
-            <p>Learn More</p>
-            <Button
-              style={{
-                gap: "8px",
-                borderRadius: "10px",
-              }}
-            >
-              <WorkspaceDocsSVG />
-              Workspace Docs
-            </Button>
-          </LearnMore>
-        </div>
+        <GettingStarted>
+          <p>Getting Started</p>
+          <Button
+            style={{
+              gap: "8px",
+              borderRadius: "10px",
+            }}
+          >
+            <GettingStartedSVG />
+            Quickstart Guide
+          </Button>
+        </GettingStarted>
+        <LearnMore>
+          <p>Learn More</p>
+          <Button
+            style={{
+              gap: "8px",
+              borderRadius: "10px",
+            }}
+          >
+            <WorkspaceDocsSVG />
+            Workspace Docs
+          </Button>
+        </LearnMore>
       </Cards>
     </Container>
   );

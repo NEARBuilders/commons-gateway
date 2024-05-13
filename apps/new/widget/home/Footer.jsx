@@ -45,7 +45,8 @@ const LogoStyle = styled.img`
 const Links = styled.div`
   display: flex;
   gap: 40px;
-  padding-bottom: 143px;
+  justify-content: space-between;
+  padding-bottom: 5rem;
   border-bottom: 1px solid #1d1d1d;
 `;
 const LeftMenu = styled.div`
@@ -55,7 +56,6 @@ const LeftMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-right: 571.33px;
   padding-bottom: 24.46px;
   gap: 20px;
   p {
@@ -93,11 +93,13 @@ const LearnMenu = styled.div`
     line-height: 150%; /* 21px */
     text-decoration: none;
   }
+  flex-shrink: 0;
 `;
 const BuildMenu = styled.div`
   width: 185px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 16px;
   h2 {
     align-self: stretch;
@@ -247,22 +249,24 @@ const Footer = () => {
             </Button>
           </SocialIcons>
         </LeftMenu>
-        <LearnMenu>
-          <h2>Learn</h2>
+        <div className="d-flex gap-5">
+          <LearnMenu>
+            <h2>Learn</h2>
 
-          <a href="#read">Read</a>
-          <a href="#watch">Watch</a>
-          <a href="#tools">Tools</a>
-          <a href="#components">Components</a>
-        </LearnMenu>
-        <BuildMenu>
-          <h2>Build</h2>
-          <a href="#guide">Guide</a>
-          <a href="#project">Project</a>
-          <a href="#activity">See Activity</a>
-          <a href="#feedback">Request Feedback</a>
-          <a href="#program">Founding Program</a>
-        </BuildMenu>
+            <a href="#read">Read</a>
+            <a href="#watch">Watch</a>
+            <a href="#tools">Tools</a>
+            <a href="#components">Components</a>
+          </LearnMenu>
+          <BuildMenu>
+            <h2>Build</h2>
+            <a href="#guide">Guide</a>
+            <a href="#project">Project</a>
+            <a href="#activity">See Activity</a>
+            <a href="#feedback">Request Feedback</a>
+            <a href="#program">Founding Program</a>
+          </BuildMenu>
+        </div>
       </Links>
       <Credits>
         <p>© 2024 BuildDAO. All rights reserved.</p>
