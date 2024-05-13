@@ -45,7 +45,7 @@ const Heading = styled.h1`
   text-align: right;
   font-size: 72px;
   font-weight: 500;
-  line-height: 120%; /* 86.4px */
+  line-height: 120%;
   letter-spacing: -2.88px;
   margin: 0;
   flex-grow: 1;
@@ -67,6 +67,8 @@ const CardSection = styled.div`
 `;
 
 const Card = styled.div`
+  z-index: 2;
+  position: relative;
   .card-content {
     padding: 24px;
     display: flex;
@@ -186,14 +188,15 @@ const Hero = () => {
               We build versatile applications, including Canvas, Profiles,
               Video, Events, Tasks, and more, support and practical examples.
             </p>
+            <Button
+              variant="primary"
+              className="mt-3"
+              style={{ width: "max-content", zIndex: 2 }}
+            >
+              See Library
+            </Button>
           </div>
-          <Button
-            variant="primary"
-            className="mx-4"
-            style={{ width: "max-content" }}
-          >
-            See Library
-          </Button>
+
           <img
             src="https://ipfs.near.social/ipfs/bafkreiaswjxjtiwthuzyvhn3l2llxat5hlb72sytgeipmifdllhmbigos4"
             style={{
@@ -201,6 +204,7 @@ const Hero = () => {
               width: "100%",
               marginTop: -104,
               borderRadius: "0 0 24px 24px",
+              zIndex: 0,
             }}
           />
         </Card>
@@ -274,10 +278,11 @@ const Hero = () => {
               Join Build DAO's funding program and turn your engagement into
               adoption.
             </p>
+            <Button className="mt-3" style={{ width: "max-content" }}>
+              Join Now
+            </Button>
           </div>
-          <Button className="mx-4" style={{ width: "max-content" }}>
-            Join Now
-          </Button>
+
           <img
             src="https://ipfs.near.social/ipfs/bafkreiei26tw4c6ndhyugyku4f22mfnbea4ikhmyefboxqyxja3rqcvizm"
             style={{

@@ -35,6 +35,18 @@ const NavContainer = styled.div`
     width: 40px;
     height: 40px;
   }
+  .pressed {
+    /* Simulate pressed state */
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); /* Add inset shadow to simulate depth */
+    transform: translateY(2px); /* Shift the button down */
+    background-color: #eca227; /* Change background color */
+    border: 1px solid #eda227;
+
+    img {
+      filter: brightness(0) invert(1);
+      color: #fff;
+    }
+  }
 `;
 
 const MainContent = styled.div`
@@ -233,8 +245,12 @@ function Navbar(props) {
     return (
       <a
         target="_blank"
-        className="grey-btn"
+        className="grey-btn pressed"
         href="https://test.nearbuilders.org"
+        // style={{
+        //   boxShadow: "inset 0 3px 5px rgba(0, 0, 0, 0.2)",
+        //   transform: "translateY(2px)",
+        // }}
       >
         <img
           src="https://ipfs.near.social/ipfs/bafkreieud33bpqibciatt6uwqju4r3xk7jwy3bunfgiz35oiwyiapbcjbq"
