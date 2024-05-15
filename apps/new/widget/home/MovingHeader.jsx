@@ -19,6 +19,14 @@ const ScrollingContainer = styled.div`
   flex-grow: 1;
   flex-basis: 0;
 
+  @media screen and (max-width: 768px) {
+    height: 5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 2.5rem;
+  }
+
   span {
     position: absolute;
     top: 0;
