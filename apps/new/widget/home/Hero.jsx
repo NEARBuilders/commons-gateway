@@ -2,9 +2,44 @@ const { Button } = VM.require("buildhub.near/widget/components") || {
   Button: () => <></>,
 };
 
-const { BuilderHat } = VM.require("new/widget/Icons") || {
-  BuilderHat: () => <></>,
-};
+const BuilderHat = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M2 18C2 18.2652 2.10536 18.5196 2.29289 18.7071C2.48043 18.8946 2.73478 19 3 19H21C21.2652 19 21.5196 18.8946 21.7071 18.7071C21.8946 18.5196 22 18.2652 22 18V16C22 15.7348 21.8946 15.4804 21.7071 15.2929C21.5196 15.1054 21.2652 15 21 15H3C2.73478 15 2.48043 15.1054 2.29289 15.2929C2.10536 15.4804 2 15.7348 2 16V18Z"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10 10V5C10 4.73478 10.1054 4.48043 10.2929 4.29289C10.4804 4.10536 10.7348 4 11 4H13C13.2652 4 13.5196 4.10536 13.7071 4.29289C13.8946 4.48043 14 4.73478 14 5V10"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4 15V12C4 10.4087 4.63214 8.88258 5.75736 7.75736C6.88258 6.63214 8.4087 6 10 6"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14 6C15.5913 6 17.1174 6.63214 18.2426 7.75736C19.3679 8.88258 20 10.4087 20 12V15"
+      stroke="#ECA227"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const HeroContainer = styled.div`
   display: flex;
@@ -37,6 +72,14 @@ const HeadingSection = styled.div`
       );
     }
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 72px 64px;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 72px 48px;
+  }
 `;
 
 const Heading = styled.h1`
@@ -50,6 +93,14 @@ const Heading = styled.h1`
   margin: 0;
   flex-grow: 1;
   flex-basis: 0;
+
+  @media screen and (max-width: 786px) {
+    font-size: 58px;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 32px;
+  }
 `;
 
 const Subheading = styled.h2`
@@ -57,6 +108,10 @@ const Subheading = styled.h2`
   font-family: Poppins, sans-serif;
   font-size: 20px;
   line-height: 140%;
+
+  @media screen and (max-width: 450px) {
+    font-size: 14px;
+  }
 `;
 
 const CardSection = styled.div`
@@ -64,6 +119,23 @@ const CardSection = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    & > * {
+      flex-basis: 100%; /* Each child takes full width */
+    }
+
+    & > :nth-child(2) {
+      order: -1; /* Middle column goes first */
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 0px 48px 72px 48px;
+  }
 `;
 
 const Card = styled.div`
@@ -93,6 +165,12 @@ const Card = styled.div`
       top: -50px;
       right: -25px;
       animation: floating 2s infinite ease-in-out;
+
+      @media screen and (max-width: 500px) {
+        width: 100px;
+        top: -30px;
+        right: -10px;
+      }
     }
   }
   border-radius: 24px;
@@ -122,6 +200,10 @@ const Card = styled.div`
     line-height: 130%; /* 23.4px */
     letter-spacing: -0.36px;
   }
+
+  /* @media screen and (max-width: 768px) {
+    transform: scale(0.9);
+  } */
 `;
 
 const HeroCard = styled.div`
@@ -192,6 +274,9 @@ const Hero = () => {
               variant="primary"
               className="mt-3"
               style={{ width: "max-content", zIndex: 2 }}
+              href={
+                "https://www.nearbuilders.org/buildhub.near/widget/app?page=library"
+              }
             >
               See Library
             </Button>
@@ -259,7 +344,7 @@ const Hero = () => {
                 <BuilderHat />
               </div>
               <p className="title m-0">Builders</p>
-              <p className="content m-0">70+</p>
+              <p className="content m-0">+70</p>
             </HeroCard>
           </div>
         </Card>

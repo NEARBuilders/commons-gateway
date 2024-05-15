@@ -55,6 +55,10 @@ const Container = styled.div`
     align-items: center;
     padding-right: 1rem;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 0.125rem 0;
+  }
 `;
 
 return (

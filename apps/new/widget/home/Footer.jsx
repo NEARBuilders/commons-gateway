@@ -48,6 +48,10 @@ const Links = styled.div`
   justify-content: space-between;
   padding-bottom: 5rem;
   border-bottom: 1px solid #1d1d1d;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const LeftMenu = styled.div`
   position: relative;
@@ -66,6 +70,9 @@ const LeftMenu = styled.div`
     font-weight: 400;
     line-height: 150%; /* 24px */
     margin: 0;
+  }
+  @media screen and (max-width: 768px) {
+    align-items: center;
   }
 `;
 const LearnMenu = styled.div`
@@ -94,6 +101,14 @@ const LearnMenu = styled.div`
     text-decoration: none;
   }
   flex-shrink: 0;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    justify-content: flex;
+    h2 {
+      align-self: center;
+      justify-content: flex;
+    }
+  }
 `;
 const BuildMenu = styled.div`
   width: 185px;
@@ -121,6 +136,14 @@ const BuildMenu = styled.div`
     font-weight: 400;
     line-height: 150%; /* 21px */
   }
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    justify-content: flex;
+    h2 {
+      align-self: center;
+      justify-content: flex;
+    }
+  }
 `;
 
 const Credits = styled.div`
@@ -137,6 +160,12 @@ const Credits = styled.div`
     font-weight: 400;
     line-height: 150%; /* 24px */
     margin: 0;
+  }
+`;
+
+const Menu = styled.div`
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
   }
 `;
 
@@ -249,7 +278,7 @@ const Footer = () => {
             </Button>
           </SocialIcons>
         </LeftMenu>
-        <div className="d-flex gap-5">
+        <Menu className="d-flex gap-5">
           <LearnMenu>
             <h2>Learn</h2>
 
@@ -266,7 +295,7 @@ const Footer = () => {
             <a href="#feedback">Request Feedback</a>
             <a href="#program">Founding Program</a>
           </BuildMenu>
-        </div>
+        </Menu>
       </Links>
       <Credits>
         <p>© 2024 BuildDAO. All rights reserved.</p>

@@ -876,6 +876,11 @@ const Content = styled.div`
   position: relative;
   z-index: 1;
   padding: 72px 48px;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const Ellipse_1 = styled.div`
@@ -923,6 +928,12 @@ const Hammer = styled.div`
   height: 122px; */
   transform: scale(0.8);
   flex-shrink: 0;
+
+  @media screen and (max-width: 500px) {
+    transform: scale(0.5);
+    top: -31px;
+    right: -80px;
+  }
 `;
 const BGImage = styled.img`
   position: absolute;
@@ -932,6 +943,12 @@ const BGImage = styled.img`
 
   top: 0px;
   right: 0px;
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(1.5);
+  }
 `;
 
 const Heading = styled.div`
@@ -955,11 +972,27 @@ const Heading = styled.div`
       letter-spacing: -2.88px;
     }
   }
+  @media screen and (max-width: 768px) {
+    max-width: 327px;
+    h2 {
+      font-size: 48px;
+      span {
+        font-size: 48px;
+      }
+    }
+  }
 `;
 const CTADiv = styled.div`
   position: relative;
   width: 452px;
   padding-bottom: 24px;
+  @media screen and (max-width: 768px) {
+    max-width: 327px;
+  }
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column !important;
+  }
 `;
 const CtaText = styled.div`
   position: absolute;
@@ -976,6 +1009,25 @@ const CtaText = styled.div`
     line-height: 140%;
     margin: 0;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 190px;
+    bottom: 31px;
+    right: 5px;
+    p {
+      font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    display: none;
+    /* position: relative; */
+    width: 190px;
+    /* bottom: 31px;
+    right: 5px; */
+    p {
+      font-size: 12px;
+    }
+  }
 `;
 const NoiseBG = styled.img`
   position: absolute;
@@ -986,6 +1038,12 @@ const NoiseBG = styled.img`
   background: url(${noise}) lightgray 0% 0% / 12.67087310552597px
     12.67087310552597px repeat;
   mix-blend-mode: color-burn;
+`;
+
+const MobileText = styled.div`
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
 `;
 const CTA = () => {
   return (
@@ -1022,6 +1080,9 @@ const CTA = () => {
               <p>We hope you join us to build better futures for everyone!</p>
             </CtaText>
           </CTADiv>
+          <MobileText>
+            <p>We hope you join us to build better futures for everyone!</p>
+          </MobileText>
           <Button variant="primary">Start here</Button>
         </Content>
       </Container>

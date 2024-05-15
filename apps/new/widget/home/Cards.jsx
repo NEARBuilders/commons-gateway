@@ -12,6 +12,9 @@ const Container = styled.div`
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
   margin: 0 3rem;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 
 const LeftCard = styled.div`
@@ -46,6 +49,15 @@ const LeftCard = styled.div`
   button {
     width: max-content;
   }
+
+  @media screen and (max-width: 500px) {
+    h3 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
 `;
 
 const RightCard = styled.div`
@@ -78,6 +90,14 @@ const RightCard = styled.div`
 
   button {
     width: max-content;
+  }
+  @media screen and (max-width: 500px) {
+    h3 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 16px;
+    }
   }
 `;
 

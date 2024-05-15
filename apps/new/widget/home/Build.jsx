@@ -60,6 +60,9 @@ const Container = styled.div`
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
   gap: 1rem;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr; /* Stack in a single column */
+  }
 `;
 
 const BuildContainer = styled.div`
@@ -96,6 +99,28 @@ const BuildContainer = styled.div`
     color: var(--Color-Neutral-neutral, #666);
     font-family: Poppins;
     font-size: 18px;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    h2 {
+      font-size: 52px;
+      span {
+        font-size: 52px;
+      }
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    h2 {
+      font-size: 32px;
+      span {
+        font-size: 32px;
+      }
+    }
   }
 `;
 
@@ -103,6 +128,11 @@ const Cards = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 34px;
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0px;
+  }
 `;
 
 const BosContainer = styled.div`
@@ -111,6 +141,10 @@ const BosContainer = styled.div`
   background: var(--1E1E1E, #1e1e1e);
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    overflow: hidden;
+  }
 `;
 
 const Text = styled.div`
@@ -132,11 +166,20 @@ const Text = styled.div`
   p {
     color: var(--Color-Neutral-neutral, #666);
     font-family: Poppins;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    h4 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -187,6 +230,24 @@ const LearnMore = styled.div`
   }
 `;
 
+const MobileContainer = styled.div`
+  display: none;
+  @media screen and (max-width: 500px) {
+    padding-top: 34px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+  }
+`;
+
+const DesktopContainer = styled.div`
+  display: flex;
+  gap: 34px;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+
 const Build = () => {
   return (
     <Container>
@@ -212,30 +273,58 @@ const Build = () => {
           </Text>
           <BosVector src={bosImage} />
         </BosContainer>
-        <GettingStarted>
-          <p>Getting Started</p>
-          <Button
-            style={{
-              gap: "8px",
-              borderRadius: "10px",
-            }}
-          >
-            <GettingStartedSVG />
-            Quickstart Guide
-          </Button>
-        </GettingStarted>
-        <LearnMore>
-          <p>Learn More</p>
-          <Button
-            style={{
-              gap: "8px",
-              borderRadius: "10px",
-            }}
-          >
-            <WorkspaceDocsSVG />
-            Workspace Docs
-          </Button>
-        </LearnMore>
+        <DesktopContainer>
+          <GettingStarted>
+            <p>Getting Started</p>
+            <Button
+              style={{
+                gap: "8px",
+                borderRadius: "10px",
+              }}
+            >
+              <GettingStartedSVG />
+              Quickstart Guide
+            </Button>
+          </GettingStarted>
+          <LearnMore>
+            <p>Learn More</p>
+            <Button
+              style={{
+                gap: "8px",
+                borderRadius: "10px",
+              }}
+            >
+              <WorkspaceDocsSVG />
+              Workspace Docs
+            </Button>
+          </LearnMore>
+        </DesktopContainer>
+        <MobileContainer>
+          <GettingStarted>
+            <p>Getting Started</p>
+            <Button
+              style={{
+                gap: "8px",
+                borderRadius: "10px",
+              }}
+            >
+              <GettingStartedSVG />
+              Quickstart Guide
+            </Button>
+          </GettingStarted>
+          <LearnMore>
+            <p>Learn More</p>
+            <Button
+              style={{
+                gap: "8px",
+                borderRadius: "10px",
+              }}
+            >
+              <WorkspaceDocsSVG />
+              Workspace Docs
+            </Button>
+          </LearnMore>
+        </MobileContainer>
       </Cards>
     </Container>
   );

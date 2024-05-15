@@ -69,6 +69,12 @@ const Title = styled.div`
   padding-top: 72px;
   padding-bottom: 64px;
   flex-shrink: 0;
+  @media screen and (max-width: 768px) {
+    padding: 72px 64px;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 72px 48px;
+  }
 `;
 const Heading = styled.h2`
   color: var(--FFFFFF, #fff);
@@ -89,6 +95,19 @@ const Heading = styled.h2`
     line-height: 120%;
     letter-spacing: -2.88px;
     margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 42px;
+    span {
+      font-size: 42px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 28px;
+    span {
+      font-size: 28px;
+    }
   }
 `;
 const Text = styled.p`
@@ -136,6 +155,10 @@ const BentoTopGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 16px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 
 const ExploreBGImage = styled.img`
@@ -145,6 +168,10 @@ const ExploreBGImage = styled.img`
 
   right: 0;
   bottom: 0;
+
+  @media screen and (max-width: 500px) {
+    opacity: 0.5;
+  }
 `;
 const ExploreTruckBGImage = styled.img`
   position: absolute;
@@ -152,6 +179,9 @@ const ExploreTruckBGImage = styled.img`
   height: 103px;
   right: 80px;
   bottom: 0;
+  @media screen and (max-width: 500px) {
+    opacity: 0.5;
+  }
 `;
 
 const Explore = styled.div`
@@ -201,6 +231,20 @@ const Explore = styled.div`
     letter-spacing: -0.16px;
     margin: 0;
   }
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+  @media screen and (max-width: 500px) {
+    display: flex;
+    padding: 21px;
+    h2 {
+      font-size: 26px;
+      z-index: 2;
+    }
+    p {
+      z-index: 2;
+    }
+  }
 `;
 const Canvas = styled.div`
   z-index: 2;
@@ -212,7 +256,7 @@ const Canvas = styled.div`
   align-items: center; */
   gap: 6.753px;
   border-radius: 16.881px;
-  border: 1px solid var(--Yellow, #ffaf51);
+
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.8) 0%,
@@ -241,6 +285,26 @@ const Canvas = styled.div`
     letter-spacing: -0.14px;
     margin: 0;
   }
+  a {
+    text-decoration: none !important;
+  }
+  &:hover {
+    /* transition: all 250ms ease; */
+    border: 1px solid var(--Yellow, #ffaf51);
+    /* h4 {
+      color: #000;
+    }
+    p {
+      color: #000;
+    } */
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+  @media screen and (max-width: 500px) {
+    display: flex;
+  }
 `;
 
 const BentoBottomGrid = styled.div`
@@ -259,6 +323,12 @@ const BGImg = styled.img`
   top: -111px;
   left: -12px;
   z-index: 0;
+
+  @media screen and (max-width: 500px) {
+    transform: scale(1);
+    width: auto;
+    height: min-content;
+  }
 `;
 
 const NoiseBG = styled.img`
@@ -285,6 +355,12 @@ const BentoDownGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 const GridLeft = styled.div`
   display: flex;
@@ -295,17 +371,23 @@ const GridLeft = styled.div`
 const EmbedsGrid = styled.div`
   display: flex;
   gap: 16px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 const EventsGrid = styled.div`
   display: flex;
   gap: 16px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 const GridContainer = styled.div`
   z-index: 2;
   display: flex;
   min-height: 119.113px;
-  padding: 1.25rem;
+  padding: 1.1875rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -323,6 +405,20 @@ const GridContainer = styled.div`
     font-size: 14px;
     line-height: 140%; /* 19.6px */
     letter-spacing: -0.14px;
+    margin: 0;
+  }
+  a {
+    text-decoration: none !important;
+  }
+  &:hover {
+    /* transition: all 500ms ease-out; */
+    border: 1px solid var(--Yellow, #ffaf51);
+    /* h4 {
+      color: #000;
+    }
+    p {
+      color: #000;
+    } */
   }
 `;
 const GridContent = styled.div`
@@ -344,21 +440,23 @@ const GridContent = styled.div`
   }
 `;
 
-const GridBlocks = ({ icon, heading, text }) => {
+const GridBlocks = ({ icon, heading, text, href }) => {
   return (
     <GridContainer>
-      <GridContent>
-        <Button
-          type="icon"
-          style={{
-            borderRadius: "30%",
-          }}
-        >
-          <icon />
-        </Button>
-        <h4>{heading}</h4>
-      </GridContent>
-      <p>{text}</p>
+      <Link href={href}>
+        <GridContent>
+          <Button
+            type="icon"
+            style={{
+              borderRadius: "30%",
+            }}
+          >
+            <icon />
+          </Button>
+          <h4>{heading}</h4>
+        </GridContent>
+        <p>{text}</p>
+      </Link>
     </GridContainer>
   );
 };
@@ -471,20 +569,22 @@ const BuildSomething = () => {
             <ExploreTruckBGImage src={ExploreTruckImg} />
           </Explore>
           <Canvas>
-            <div className="d-flex gap-2 align-items-end ">
-              <Button
-                type="icon"
-                style={{
-                  borderRadius: "30%",
-                }}
-              >
-                <CanvasSVG />
-              </Button>
-              <h4>Canvas</h4>
-            </div>
-            <p>
-              Create your own Canvas, every near account has it's own canvas.
-            </p>
+            <Link href="https://draw.everything.dev">
+              <div className="d-flex gap-2 align-items-end ">
+                <Button
+                  type="icon"
+                  style={{
+                    borderRadius: "30%",
+                  }}
+                >
+                  <CanvasSVG />
+                </Button>
+                <h4>Canvas</h4>
+              </div>
+              <p>
+                Create your own Canvas, every near account has it's own canvas.
+              </p>
+            </Link>
           </Canvas>
         </BentoTopGrid>
         <BentoDownGrid>
@@ -494,11 +594,13 @@ const BuildSomething = () => {
                 icon={Embeds}
                 heading="Embeds"
                 text="Enhance everything with custom interoperable embeds, your personal portal to your favorite code, where ever you want it."
+                href="#embeds"
               />
               <GridBlocks
                 icon={Embeds}
                 heading="Video App"
                 text="Join our video.app or create any video app with an easy to use tool built on NEAR's."
+                href="https://every.near.page"
               />
             </EmbedsGrid>
             <EventsGrid>
@@ -506,6 +608,7 @@ const BuildSomething = () => {
                 icon={CanvasSVG}
                 heading="Event App"
                 text="Create any events app with an easy to use tool built on NEAR's Blockchain Operating System."
+                href="https://www.nearbuilders.org/buildhub.near/widget/app?page=feed&tab=events"
               />
               <GridBlocks
                 icon={CanvasSVG}
