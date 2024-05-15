@@ -112,7 +112,7 @@ const Subheading = styled.h2`
   font-size: 20px;
   line-height: 140%;
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     font-size: 14px;
   }
 `;
@@ -168,6 +168,9 @@ const Card = styled.div`
       top: -50px;
       right: -25px;
       animation: floating 2s infinite ease-in-out;
+      @media screen and (max-width: 1024px) {
+        width: 125px;
+      }
 
       @media screen and (max-width: 500px) {
         width: 100px;
@@ -207,8 +210,15 @@ const Card = styled.div`
   /* @media screen and (max-width: 768px) {
     transform: scale(0.9);
   } */
-
+  @media screen and (max-width: 1024px) {
+    .join-img {
+      margin-top: 12px !important;
+    }
+  }
   @media screen and (max-width: 768px) {
+    .card-content {
+      gap: 24px;
+    }
     div {
       a {
         margin-top: 100px;

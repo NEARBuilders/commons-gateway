@@ -69,6 +69,9 @@ const Title = styled.div`
   padding-top: 72px;
   padding-bottom: 64px;
   flex-shrink: 0;
+  @media screen and (max-width: 1024px) {
+    padding: 72px 64px;
+  }
   @media screen and (max-width: 768px) {
     padding: 72px 64px;
   }
@@ -96,7 +99,8 @@ const Heading = styled.h2`
     letter-spacing: -2.88px;
     margin: 0;
   }
-
+  @media screen and (max-width: 1024px) {
+  }
   @media screen and (max-width: 768px) {
     font-size: 42px;
     span {
@@ -179,6 +183,10 @@ const ExploreTruckBGImage = styled.img`
   height: 103px;
   right: 80px;
   bottom: 0;
+  @media screen and (max-width: 1024px) {
+    opacity: 0.5;
+    z-index: 0 !important;
+  }
   @media screen and (max-width: 500px) {
     opacity: 0.5;
   }
@@ -230,6 +238,9 @@ const Explore = styled.div`
     line-height: 150%; /* 24px */
     letter-spacing: -0.16px;
     margin: 0;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 21px;
   }
   @media screen and (max-width: 768px) {
     display: flex;

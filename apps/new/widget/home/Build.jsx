@@ -65,7 +65,8 @@ const Container = styled.div`
   }
   @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr; /* Stack in a single column */
-    padding: 48px 20px;
+    padding: 48px;
+    align-items: center;
   }
 `;
 
@@ -74,6 +75,7 @@ const BuildContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   flex-shrink: 0;
+  width: 100%;
 
   h2 {
     color: var(--FFFFFF, #fff);
@@ -106,6 +108,9 @@ const BuildContainer = styled.div`
     margin: 0;
   }
 
+  @media screen and (max-width: 1024px) {
+    align-items: center;
+  }
   @media screen and (max-width: 768px) {
     align-items: center;
     h2 {
@@ -261,26 +266,6 @@ const LearnMore = styled.div`
     p {
       font-size: 16px;
     }
-  }
-`;
-
-const MobileContainer = styled.div`
-  display: none;
-  @media screen and (max-width: 500px) {
-    padding-top: 34px;
-    display: flex;
-    gap: 16px;
-    flex-direction: column;
-  }
-`;
-
-const DesktopContainer = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 34px;
-  @media screen and (max-width: 500px) {
-    display: none;
   }
 `;
 

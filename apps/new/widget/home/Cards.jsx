@@ -50,6 +50,11 @@ const LeftCard = styled.div`
     width: max-content;
   }
 
+  @media screen and (max-width: 1025px) {
+    h3 {
+      font-size: 38px;
+    }
+  }
   @media screen and (max-width: 500px) {
     background-size: cover;
     padding: 16px;
@@ -93,6 +98,11 @@ const RightCard = styled.div`
 
   button {
     width: max-content;
+  }
+  @media screen and (max-width: 1025px) {
+    h3 {
+      font-size: 38px;
+    }
   }
   @media screen and (max-width: 500px) {
     background-size: cover;
