@@ -543,6 +543,20 @@ const GridRight = styled.div`
       margin: 0;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    .plus-bg {
+      font-size: 48px;
+    }
+    div {
+      h2 {
+        font-size: 24px;
+        span {
+          font-size: 24px;
+        }
+      }
+    }
+  }
 `;
 const BuildSomething = () => {
   return (

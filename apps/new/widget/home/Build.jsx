@@ -63,6 +63,10 @@ const Container = styled.div`
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr; /* Stack in a single column */
   }
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr; /* Stack in a single column */
+    padding: 48px 20px;
+  }
 `;
 
 const BuildContainer = styled.div`
@@ -130,8 +134,8 @@ const Cards = styled.div`
   gap: 34px;
 
   @media screen and (max-width: 500px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 0px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 `;
 
@@ -144,6 +148,8 @@ const BosContainer = styled.div`
 
   @media screen and (max-width: 500px) {
     overflow: hidden;
+    display: inline-block;
+    position: relative;
   }
 `;
 
@@ -181,6 +187,11 @@ const Text = styled.div`
       font-size: 18px;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    h4 {
+    }
+  }
 `;
 
 const BosVector = styled.img`
@@ -188,6 +199,14 @@ const BosVector = styled.img`
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
+
+  @media screen and (max-width: 500px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    opacity: 0.5;
+  }
 `;
 
 const GettingStarted = styled.div`
@@ -206,6 +225,15 @@ const GettingStarted = styled.div`
     line-height: 120%; /* 24px */
     letter-spacing: -0.8px;
     margin: 0;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 20px;
+    p {
+      font-size: 16px;
+    }
+    Button {
+      flex-shrink: 0;
+    }
   }
 `;
 const LearnMore = styled.div`
@@ -228,6 +256,12 @@ const LearnMore = styled.div`
     letter-spacing: -0.8px;
     margin: 0;
   }
+  @media screen and (max-width: 500px) {
+    padding: 20px;
+    p {
+      font-size: 16px;
+    }
+  }
 `;
 
 const MobileContainer = styled.div`
@@ -241,7 +275,9 @@ const MobileContainer = styled.div`
 `;
 
 const DesktopContainer = styled.div`
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 34px;
   @media screen and (max-width: 500px) {
     display: none;
@@ -273,7 +309,33 @@ const Build = () => {
           </Text>
           <BosVector src={bosImage} />
         </BosContainer>
-        <DesktopContainer>
+        {/* <DesktopContainer> */}
+        <GettingStarted>
+          <p>Getting Started</p>
+          <Button
+            style={{
+              gap: "8px",
+              borderRadius: "10px",
+            }}
+          >
+            <GettingStartedSVG />
+            Quickstart Guide
+          </Button>
+        </GettingStarted>
+        <LearnMore>
+          <p>Learn More</p>
+          <Button
+            style={{
+              gap: "8px",
+              borderRadius: "10px",
+            }}
+          >
+            <WorkspaceDocsSVG />
+            Workspace Docs
+          </Button>
+        </LearnMore>
+        {/* </DesktopContainer> */}
+        {/* <MobileContainer>
           <GettingStarted>
             <p>Getting Started</p>
             <Button
@@ -298,33 +360,7 @@ const Build = () => {
               Workspace Docs
             </Button>
           </LearnMore>
-        </DesktopContainer>
-        <MobileContainer>
-          <GettingStarted>
-            <p>Getting Started</p>
-            <Button
-              style={{
-                gap: "8px",
-                borderRadius: "10px",
-              }}
-            >
-              <GettingStartedSVG />
-              Quickstart Guide
-            </Button>
-          </GettingStarted>
-          <LearnMore>
-            <p>Learn More</p>
-            <Button
-              style={{
-                gap: "8px",
-                borderRadius: "10px",
-              }}
-            >
-              <WorkspaceDocsSVG />
-              Workspace Docs
-            </Button>
-          </LearnMore>
-        </MobileContainer>
+        </MobileContainer> */}
       </Cards>
     </Container>
   );

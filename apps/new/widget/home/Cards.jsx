@@ -51,11 +51,14 @@ const LeftCard = styled.div`
   }
 
   @media screen and (max-width: 500px) {
+    background-size: cover;
+    padding: 16px;
+    gap: 18px;
     h3 {
-      font-size: 36px;
+      font-size: 26px;
     }
     p {
-      font-size: 16px;
+      font-size: 12px;
     }
   }
 `;
@@ -92,11 +95,14 @@ const RightCard = styled.div`
     width: max-content;
   }
   @media screen and (max-width: 500px) {
+    background-size: cover;
+    padding: 16px;
+    gap: 18px;
     h3 {
-      font-size: 36px;
+      font-size: 26px;
     }
     p {
-      font-size: 16px;
+      font-size: 12px;
     }
   }
 `;

@@ -79,6 +79,9 @@ const HeadingSection = styled.div`
 
   @media screen and (max-width: 500px) {
     padding: 72px 48px;
+    .hero-btns {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -134,7 +137,7 @@ const CardSection = styled.div`
   }
 
   @media screen and (max-width: 500px) {
-    padding: 0px 48px 72px 48px;
+    padding: 0px 20px 72px 20px;
   }
 `;
 
@@ -204,6 +207,45 @@ const Card = styled.div`
   /* @media screen and (max-width: 768px) {
     transform: scale(0.9);
   } */
+
+  @media screen and (max-width: 768px) {
+    div {
+      a {
+        margin-top: 100px;
+      }
+    }
+    .library-img {
+      margin-top: -340px !important;
+    }
+
+    .join-img {
+      margin-top: -340px !important;
+      z-index: 0 !important;
+    }
+
+    .join-btn {
+      margin-top: 100px !important;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    div {
+      a {
+        margin-top: 100px;
+      }
+    }
+    .library-img {
+      margin-top: -244px !important;
+    }
+
+    .join-img {
+      margin-top: -200px !important;
+      z-index: 0 !important;
+    }
+
+    .join-btn {
+      margin-top: 100px !important;
+    }
+  }
 `;
 
 const HeroCard = styled.div`
@@ -256,7 +298,7 @@ const Hero = () => {
         <Subheading>
           Designed to support builders in a multi-chain ecosystem.
         </Subheading>
-        <div className="d-flex align-items-center gap-4">
+        <div className="d-flex align-items-center gap-4 hero-btns">
           <Button className="hero-button">Start Project</Button>
           <Button>Explore Tools</Button>
         </div>
@@ -273,16 +315,18 @@ const Hero = () => {
             <Button
               variant="primary"
               className="mt-3"
-              style={{ width: "max-content", zIndex: 2 }}
-              href={
-                "https://www.nearbuilders.org/buildhub.near/widget/app?page=library"
-              }
+              style={{
+                width: "max-content",
+                zIndex: 2,
+              }}
+              href="https://www.nearbuilders.org/buildhub.near/widget/app?page=library"
             >
               See Library
             </Button>
           </div>
 
           <img
+            className="library-img"
             src="https://ipfs.near.social/ipfs/bafkreiaswjxjtiwthuzyvhn3l2llxat5hlb72sytgeipmifdllhmbigos4"
             style={{
               objectFit: "cover",
@@ -363,12 +407,13 @@ const Hero = () => {
               Join Build DAO's funding program and turn your engagement into
               adoption.
             </p>
-            <Button className="mt-3" style={{ width: "max-content" }}>
+            <Button className="mt-3 join-btn" style={{ width: "max-content" }}>
               Join Now
             </Button>
           </div>
 
           <img
+            className="join-img"
             src="https://ipfs.near.social/ipfs/bafkreiei26tw4c6ndhyugyku4f22mfnbea4ikhmyefboxqyxja3rqcvizm"
             style={{
               objectFit: "cover",

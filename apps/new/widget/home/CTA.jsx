@@ -864,6 +864,9 @@ const MainContainer = styled.div`
   position: relative;
   background: black;
   padding: 72px 48px;
+  @media screen and (max-width: 500px) {
+    padding: 2rem 48px;
+  }
 `;
 
 const Container = styled.div`
@@ -880,6 +883,8 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 20px;
+    gap: 5px;
   }
 `;
 
@@ -931,6 +936,7 @@ const Hammer = styled.div`
 
   @media screen and (max-width: 500px) {
     transform: scale(0.5);
+    opacity: 0.5;
     top: -31px;
     right: -80px;
   }
@@ -948,6 +954,7 @@ const BGImage = styled.img`
     width: 100%;
     height: 100%;
     transform: scaleX(1.5);
+    opacity: 0.5;
   }
 `;
 
@@ -981,6 +988,18 @@ const Heading = styled.div`
       }
     }
   }
+  @media screen and (max-width: 500px) {
+    max-width: 327px;
+    h2 {
+      font-size: 24px;
+      letter-spacing: -1px;
+
+      span {
+        font-size: 24px;
+        letter-spacing: -1px;
+      }
+    }
+  }
 `;
 const CTADiv = styled.div`
   position: relative;
@@ -992,6 +1011,7 @@ const CTADiv = styled.div`
   @media screen and (max-width: 500px) {
     display: flex;
     flex-direction: column !important;
+    padding-bottom: 0px;
   }
 `;
 const CtaText = styled.div`
@@ -1015,13 +1035,14 @@ const CtaText = styled.div`
     bottom: 31px;
     right: 5px;
     p {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
   @media screen and (max-width: 500px) {
     display: none;
     /* position: relative; */
     width: 190px;
+    padding: 18px 0px;
     /* bottom: 31px;
     right: 5px; */
     p {
@@ -1041,6 +1062,12 @@ const NoiseBG = styled.img`
 `;
 
 const MobileText = styled.div`
+  padding: 18px 0px;
+  /* bottom: 31px;
+    right: 5px; */
+  p {
+    font-size: 12px;
+  }
   @media screen and (min-width: 500px) {
     display: none;
   }

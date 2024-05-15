@@ -47,18 +47,6 @@ const ScrollingContainer = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
-
-    @media screen and (max-width: 768px) {
-      font-size: 58px;
-      span {
-        line-height: 4.375rem;
-        align-self: center;
-      }
-    }
-
-    @media screen and (max-width: 600px) {
-      font-size: 32px;
-    }
   }
   @keyframes slide {
     0% {
@@ -90,6 +78,18 @@ const ScrollingContainer = styled.div`
     }
     90% {
       top: -10.8em;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    height: 5rem;
+    span {
+      font-size: 58px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    height: 2.5rem;
+    span {
+      font-size: 32px;
     }
   }
 `;
