@@ -32,6 +32,7 @@ const HomeContainer = styled.div`
   background-color: black;
   color: white;
   min-height: 100vh;
+  overflow-x: clip;
 
   ${poppinsCss}
 `;

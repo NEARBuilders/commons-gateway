@@ -23,7 +23,7 @@ const LeftCard = styled.div`
   background-size: cover;
   border-radius: 24px;
   padding: 48px;
-  aspect-ratio: 1 / 1;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ const RightCard = styled.div`
   background-size: cover;
   border-radius: 24px;
   padding: 48px;
-  aspect-ratio: 1 / 1;
+  height: 100%;
 
   display: flex;
   flex-direction: column;

@@ -96,13 +96,16 @@ const Heading = styled.h1`
   margin: 0;
   flex-grow: 1;
   flex-basis: 0;
+  padding: 0 !important;
 
-  @media screen and (max-width: 786px) {
-    font-size: 58px;
+  @media screen and (max-width: 920px) {
+    font-size: 4rem;
   }
-
-  @media screen and (max-width: 600px) {
-    font-size: 32px;
+  @media screen and (max-width: 870px) {
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 676px) {
+    font-size: 2rem;
   }
 `;
 
@@ -301,9 +304,9 @@ const Hero = () => {
   return (
     <HeroContainer>
       <HeadingSection>
-        <div className="d-flex justify-content-between gap-3">
-          <Heading>Let's Build</Heading>
-          <Widget src="${config_account}/widget/home.MovingHeader" />
+        <div className="row gap-3 flex-wrap">
+          <Heading className="col-6">Let's Build</Heading>
+          <Widget src="${config_account}/widget/home.hero.vertical" />
         </div>
         <Subheading>
           Designed to support builders in a multi-chain ecosystem.
