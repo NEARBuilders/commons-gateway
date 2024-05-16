@@ -1,8 +1,8 @@
-# Build DAO Gateway
+# Commons Gateway
 
-Let's connect, collaborate, and create solutions together!
+Let's align, agree, and acellerate together!
 
-This repository holds the front-end widgets for [Build DAO Gateway](https://nearbuilders.org/). This project is configured as a [bos-workspace](https://github.com/nearbuilders/bos-workspace).
+This repository holds the front-end widgets for [Commons DAO Gateway](https://commons.build/now/). This project is configured as a [bos-workspace](https://github.com/nearbuilders/bos-workspace).
 
 ## Setup & Development
 
@@ -33,7 +33,7 @@ This will start a gateway at http://127.0.0.1:8080 which will render your local 
 #### Features
 
 - Customizable Settings
-- Onboarding Flow
-- Leaderboard
-- Groups
-- Projects
+- Consensus Flow
+- Resourceboard
+- WorkingGroups
+- ActiveProjects
