@@ -1,27 +1,14 @@
-// const words = props.words ?? [
-//   "Projects",
-//   "Tools",
-//   "Solutions",
-//   "Teams",
-//   "Dreams",
-//   "Visions",
-//   "Systems",
-//   "Ecosystems",
-//   "Commons",
-//   "Futures",
-// ];
-
 const words = props.words ?? [
+  "Projects",
+  "Tools",
+  "Solutions",
+  "Teams",
+  "Dreams",
+  "Visions",
+  "Systems",
   "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
-  "Ecosystems",
+  "Commons",
+  "Futures",
 ];
 
 const Container = styled.div`
